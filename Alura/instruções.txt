@@ -1,0 +1,64 @@
+1o -npm init -y -base projeto
+2o -npm install next react react-dom -instalar o next
+3o -editar package.json 
+    {
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+        }
+    }
+4o -criar pasta pages | criar arquivo index.js
+5o -arquivo index:
+            export default function Page() {
+        return <h1>Hello, Next.js!</h1>
+        }
+6o -Criar dentro de pages/ um arquivo chamado app.js
+    function MyApp({Component, pageProps}){
+        return(
+            <>
+            <style>{`*{
+                font-family:sans-serif;
+            }`}</style>
+            <Component {...pageProps}/>
+            </>
+        )
+    }
+    export default MyApp
+7o -Criar dentro do pages arquivo _document.js 
+    import { Html, Head, Main, NextScript } from 'next/document'
+ 
+    export default function Document() {
+    return (
+        <Html>
+        <Head />
+        <body>
+            <Main />
+            <NextScript />
+        </body>
+        </Html>
+    )
+    }
+
+//////////////////////////////////////////////////
+
+Rotas dinamicas 
+1o -Criar a pasta para guardar o arquivo base com o nome [id].js ou [slug].js
+2o -Acessar dados BackEnd - no arquivo [id].js
+    import {useRouter} from 'next/router'
+    const router = useRouter();
+    {router.query.id} - forma que invoca dados do back
+
+/////////////////////////////////////////////////
+Navegar entre paginas
+1o -import next link
+    import Link from 'next/link'
+    <Link href="/">
+        Home
+    </Link>
+
+/////////////////////////////
+Carregar imagem
+pasta public na raiz no projeto para guardar as fotos. public/images
+    <img src="images/perfil.jpg"/>
